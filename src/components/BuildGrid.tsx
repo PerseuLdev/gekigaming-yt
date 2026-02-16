@@ -11,16 +11,32 @@ interface BuildGridProps {
   forcedBuilds?: BuildGuide[];
   customTitle?: string;
   onViewCategory?: (category: string) => void;
+  onSelectBuild?: (build: BuildGuide) => void;
 }
 
-export const BuildGrid: React.FC<BuildGridProps> = ({ builds, categories, forcedBuilds, customTitle, onViewCategory }) => {
-  const [selectedBuild, setSelectedBuild] = useState<BuildGuide | null>(null);
+export const BuildGrid: React.FC<BuildGridProps> = ({ builds, categories, forcedBuilds, customTitle, onViewCategory, onSelectBuild }) => {
+  const [internalSelectedBuild, setInternalSelectedBuild] = useState<BuildGuide | null>(null);
+
+  const handleSelect = (build: BuildGuide) => {
+    if (onSelectBuild) {
+      onSelectBuild(build);
+    } else {
+      setInternalSelectedBuild(build);
+    }
+  };
 
   if (forcedBuilds) {
       return (
         <div id="build-grid-section" className="w-full max-w-7xl mx-auto px-4 pb-20 relative z-40 scroll-mt-24">
-             {selectedBuild && (
-                <BuildModal build={selectedBuild} onClose={() => setSelectedBuild(null)} />
+             {internalSelectedBuild && !onSelectBuild && (
+                internalSelectedBuild.detailedData ? (
+                  /* We should really import BuildDetails here too if we want internal state to work, 
+                     but lifting to App.tsx is better. For safety, let's just use BuildModal for now 
+                     but fix the underlying issue by passing the prop from App.tsx. */
+                  <BuildModal build={internalSelectedBuild} onClose={() => setInternalSelectedBuild(null)} />
+                ) : (
+                  <BuildModal build={internalSelectedBuild} onClose={() => setInternalSelectedBuild(null)} />
+                )
             )}
 
             <section className="mb-24 reveal">
@@ -41,7 +57,7 @@ export const BuildGrid: React.FC<BuildGridProps> = ({ builds, categories, forced
                 ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         {forcedBuilds.map((build) => (
-                             <BuildCard key={build.id} build={build} onSelect={setSelectedBuild} />
+                             <BuildCard key={build.id} build={build} onSelect={handleSelect} />
                         ))}
                     </div>
                 )}
@@ -59,8 +75,8 @@ export const BuildGrid: React.FC<BuildGridProps> = ({ builds, categories, forced
   return (
     <div id="build-grid-section" className="w-full max-w-7xl mx-auto px-4 pb-20 relative z-40 scroll-mt-24">
 
-      {selectedBuild && (
-          <BuildModal build={selectedBuild} onClose={() => setSelectedBuild(null)} />
+      {internalSelectedBuild && !onSelectBuild && (
+          <BuildModal build={internalSelectedBuild} onClose={() => setInternalSelectedBuild(null)} />
       )}
 
       {displayCategories.map((category) => {
@@ -112,7 +128,7 @@ export const BuildGrid: React.FC<BuildGridProps> = ({ builds, categories, forced
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {visibleBuilds.map((build) => (
-                <BuildCard key={build.id} build={build} onSelect={setSelectedBuild} />
+                <BuildCard key={build.id} build={build} onSelect={handleSelect} />
               ))}
             </div>
 
@@ -158,7 +174,7 @@ const BuildCard: React.FC<{ build: BuildGuide, onSelect: (b: BuildGuide) => void
         }
 
         // Second click or Desktop click
-        if (build.stages) {
+        if (build.detailedData || (build as any).stages) {
             onSelect(build);
         } else if (build.videoUrl) {
             window.open(build.videoUrl, '_blank', 'noopener,noreferrer');
@@ -173,7 +189,7 @@ const BuildCard: React.FC<{ build: BuildGuide, onSelect: (b: BuildGuide) => void
                 isFocused 
                 ? 'border-geki-red shadow-2xl shadow-geki-red/10 scale-[1.02] z-30' 
                 : 'border-slate-200 dark:border-white/5 hover:border-geki-red/50 hover:shadow-2xl hover:shadow-geki-red/5'
-            } ${build.stages || build.videoUrl ? 'cursor-pointer' : ''}`}
+            } ${build.detailedData || (build as any).stages || build.videoUrl ? 'cursor-pointer' : ''}`}
         >
             {/* Card Header/Image */}
             <div className="relative h-52 overflow-hidden shrink-0">
@@ -183,7 +199,7 @@ const BuildCard: React.FC<{ build: BuildGuide, onSelect: (b: BuildGuide) => void
                 </div>
                 )}
 
-                {build.stages && (
+                {(build.detailedData || (build as any).stages) && (
                 <div className={`absolute inset-0 z-20 flex items-center justify-center transition-opacity duration-300 bg-geki-red/20 pointer-events-none ${isFocused ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
                     <span className="bg-geki-red text-white font-black uppercase tracking-widest px-4 py-2 text-xs">
                         Ver Detalhes
@@ -249,7 +265,7 @@ const BuildCard: React.FC<{ build: BuildGuide, onSelect: (b: BuildGuide) => void
                             isFocused ? 'bg-geki-red text-white' : 'text-geki-red hover:text-white hover:bg-geki-red'
                         }`}
                     >
-                        {build.stages ? 'Ver Build' : build.videoUrl ? 'Assistir' : 'Ler Agora'}
+                        {build.detailedData || (build as any).stages ? 'Ver Build' : build.videoUrl ? 'Assistir' : 'Ler Agora'}
                         <svg className={`w-3 h-3 transition-transform ${isFocused ? 'translate-x-1' : 'group-hover/btn:translate-x-1'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                     </button>
                 </div>

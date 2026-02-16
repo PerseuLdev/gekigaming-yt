@@ -19,8 +19,40 @@ export interface BuildStage {
   pet?: string[];
 }
 
+export interface BuildSkill {
+  name: string;
+  description: string;
+  image?: string;
+  isCore?: boolean;
+}
+
+export interface BuildAttribute {
+  name: string;
+  value: number | string;
+  description?: string;
+}
+
+export interface BuildTip {
+  type: 'pro' | 'warning' | 'info';
+  content: string;
+}
+
+export interface DetailedBuild {
+  id: string; // matches BuildGuide.id
+  slug?: string;
+  tldr: string;
+  attributes: {
+    phase: string;
+    items: BuildAttribute[];
+  }[];
+  skills: BuildSkill[];
+  tips: BuildTip[];
+  stages: BuildStage[];
+}
+
 export interface BuildGuide {
   id: string;
+  slug?: string;
   title: string;
   category: ContentCategory;
   subcategory?: string; 
@@ -32,8 +64,9 @@ export interface BuildGuide {
   difficulty?: 'Easy' | 'Medium' | 'Hard';
   tags: string[];
   videoUrl?: string;
-  // New detailed data
-  stages?: BuildStage[];
+  
+  // CMS Linked Data
+  detailedData?: DetailedBuild;
 }
 
 export interface GalleryItem {

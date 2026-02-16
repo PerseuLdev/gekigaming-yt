@@ -37,7 +37,7 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = ({
         {/* Breadcrumbs / Back */}
         <button
           onClick={onNavigateHome}
-          className="reveal mb-6 text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-geki-red transition-colors flex items-center gap-1"
+          className="mb-6 text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-geki-red transition-colors flex items-center gap-1"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
@@ -45,7 +45,7 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = ({
           Voltar para Início
         </button>
 
-        <header className="reveal text-center mb-12">
+        <header className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-display font-black text-geki-black dark:text-white mb-4 tracking-tight">
             PORTAL DE <span className="text-geki-red">CONTEÚDO</span>
           </h1>
@@ -55,7 +55,7 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = ({
         </header>
 
         {/* Category Filter Chips */}
-        <div className="reveal flex flex-wrap justify-center gap-3 mb-16" style={{ transitionDelay: '100ms' }}>
+        <div className="flex flex-wrap justify-center gap-3 mb-16">
           <button
             onClick={() => setSelectedCategory(null)}
             className={`px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-300 border-2 ${
@@ -82,7 +82,7 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = ({
         </div>
 
         {/* Articles Grid */}
-        <div className="reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-20" style={{ transitionDelay: '200ms' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-20">
           {filteredArticles.length > 0 ? (
             filteredArticles.map((article) => (
               <ArticleGridCard key={article.id} article={article} onSelect={onSelectBuild} />
