@@ -272,7 +272,16 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onSearc
           }`}
         >
           {/* Menu Header with Logo */}
-          <div className="p-8 pt-10 border-b border-white/5 bg-white/5">
+          <div className="p-8 pt-10 border-b border-white/5 bg-white/5 relative">
+            <button 
+              onClick={() => setIsMenuOpen(false)}
+              className="absolute top-8 right-6 text-white/40 hover:text-geki-red transition-colors"
+              aria-label="Fechar Menu"
+            >
+              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
             <div className="flex items-center gap-4">
               <div className="h-12 w-12 flex items-center justify-center bg-white/10 border border-white/10 rounded-xl p-2 drop-shadow-xl">
                 <img
