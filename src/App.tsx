@@ -45,7 +45,7 @@ function App() {
   // Determine current page view based on path for Navbar active state
   const currentPage = useMemo(() => {
     if (location.pathname === '/') return PageView.HOME;
-    if (location.pathname.startsWith('/builds')) return PageView.BUILDS;
+    if (location.pathname.startsWith('/builds') || location.pathname.startsWith('/build/')) return PageView.BUILDS;
     if (location.pathname.startsWith('/sobre')) return PageView.ABOUT;
     return PageView.HOME;
   }, [location.pathname]);
