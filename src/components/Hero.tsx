@@ -28,7 +28,7 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
         <div className="mb-8 reveal">
             <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full">
                 <div className="w-2 h-2 rounded-full bg-geki-red animate-pulse"></div>
-                <span className="text-white/90 text-xs font-bold uppercase tracking-widest">Guilda Oficial Ragnatales</span>
+                <span className="text-white/90 text-xs font-bold uppercase tracking-widest">Parceiro Oficial Ragnatales</span>
             </div>
         </div>
 
@@ -77,7 +77,7 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
       </div>
 
       {/* Aesthetic Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 opacity-60 animate-bounce">
+      <div className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex-col items-center gap-2 opacity-60 animate-bounce">
         <span className="text-[10px] uppercase tracking-[0.3em] text-white font-bold">Scroll</span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent"></div>
       </div>

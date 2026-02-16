@@ -73,6 +73,11 @@ function App() {
   };
 
   const handleNavigate = (page: PageView) => {
+      if (page === currentPage) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+      }
+      
       setCurrentPage(page);
       if (page === PageView.BUILDS) {
           setSelectedClassFilter(null);
@@ -227,16 +232,14 @@ function App() {
             <Hero onCtaClick={handleViewAllBuilds} />
             
             {/* Vitrine de Builds por Classe logo após o Hero */}
-            <div className="reveal">
-              <ExpandingGallery
-                  items={GALLERY_ITEMS}
-                  onClassSelect={handleClassSelect}
-                  onViewAll={handleViewAllBuilds}
-              />
-            </div>
+            <ExpandingGallery
+                items={GALLERY_ITEMS}
+                onClassSelect={handleClassSelect}
+                onViewAll={handleViewAllBuilds}
+            />
 
             {/* Content categories below gallery */}
-            <div className="pt-10 reveal">
+            <div className="pt-10">
                 <BuildGrid
                     builds={LATEST_BUILDS}
                     categories={['Do Zero ao RMT - Ragnatales', 'Pai de Família', 'Guias Essenciais', 'Patch Notes']}
@@ -269,7 +272,7 @@ function App() {
       {/* Botão Voltar ao Topo */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={`fixed bottom-6 right-6 z-50 px-4 py-3 bg-geki-red text-white shadow-lg hover:bg-red-700 transition-all duration-300 skew-x-[-10deg] ${
+        className={`fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[100] px-4 py-3 bg-geki-red text-white shadow-lg hover:bg-red-700 transition-all duration-300 skew-x-[-10deg] ${
           showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
         }`}
         aria-label="Voltar ao topo"

@@ -35,7 +35,7 @@ export const BuildGrid: React.FC<BuildGridProps> = ({ builds, categories, forced
                 <BuildModal build={selectedBuild} onClose={() => setSelectedBuild(null)} />
             )}
 
-            <section className="mb-24">
+            <section className="mb-24 reveal">
                 <div className="mb-10 flex items-end gap-4 border-b border-slate-200 dark:border-white/10 pb-4">
                     <h2 className="text-4xl md:text-5xl font-display font-black text-geki-black dark:text-white uppercase tracking-tighter leading-none">
                         {customTitle || "Builds Selecionadas"}
@@ -86,7 +86,7 @@ export const BuildGrid: React.FC<BuildGridProps> = ({ builds, categories, forced
         const hiddenCount = categoryBuilds.length - MAX_ITEMS_PER_CATEGORY;
 
         return (
-          <section key={category} className="mb-24 last:mb-0">
+          <section key={category} className="mb-24 last:mb-0 reveal">
             <div className="mb-10 flex items-end gap-4 border-b border-slate-200 dark:border-white/10 pb-4">
                <h2 className="text-4xl md:text-5xl font-display font-black text-geki-black dark:text-white uppercase tracking-tighter leading-none">
                   {category === 'Do Zero ao RMT - Ragnatales' ? (

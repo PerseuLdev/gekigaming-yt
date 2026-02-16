@@ -59,66 +59,65 @@ export const ExpandingGallery: React.FC<ExpandingGalleryProps> = ({ items, onCla
         {/* Desktop & Mobile Combined Logic */}
         <div 
           ref={scrollRef}
-          className="flex h-full w-full overflow-x-auto md:overflow-hidden scrollbar-hide snap-x snap-mandatory md:snap-none px-4 md:px-0 py-4 md:py-0"
+          className="flex h-full w-full overflow-x-auto md:overflow-hidden scrollbar-hide snap-x snap-mandatory md:snap-none px-4 md:px-0 py-4 md:py-0 reveal-stagger"
         >
           {items.map((item, index) => (
-            <div
-              key={item.id}
-              onClick={() => onClassSelect(item.title)}
-              className={`
-                relative flex-shrink-0 md:flex-shrink md:flex-grow
-                w-[280px] md:w-auto 
-                h-full
-                transition-all duration-500 ease-out
-                transform -skew-x-12 md:hover:flex-grow-[4]
-                overflow-hidden
-                border-r-4 border-geki-paper dark:border-geki-black
-                first:ml-4 md:first:ml-0 last:mr-4 md:last:mr-0
-                snap-center
-                group
-                cursor-pointer
-              `}
+            <div 
+              key={item.id} 
+              className="reveal flex-shrink-0 md:flex-shrink md:flex-grow w-[280px] md:w-auto h-full snap-center first:ml-4 md:first:ml-0 last:mr-4 md:last:mr-0 group/reveal md:hover:flex-grow-[4] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]"
             >
-              {/* Image Container (Un-skewed) */}
-              <div className="absolute inset-[-20%] transform skew-x-12 origin-center">
-                <div className="absolute inset-0 bg-geki-black/40 group-hover:bg-geki-black/20 transition-colors duration-500 z-10" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90 z-10" />
-                <img
-                  className="h-full w-full object-cover object-center filter grayscale-[60%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
-                  src={item.imageOverride || item.imageUrl}
-                  alt={item.title}
-                />
-              </div>
+              <div
+                onClick={() => onClassSelect(item.title)}
+                className={`
+                  relative w-full h-full
+                  transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]
+                  transform -skew-x-[12deg]
+                  overflow-hidden
+                  border-r-4 border-geki-paper dark:border-geki-black
+                  group
+                  cursor-pointer
+                `}
+              >
+                {/* Image Container (Un-skewed) */}
+                <div className="absolute inset-y-0 inset-x-[-150%] transform skew-x-[12deg] origin-center overflow-hidden">
+                  <div className="absolute inset-0 bg-geki-black/50 group-hover:bg-geki-black/20 transition-colors duration-700 z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90 z-10" />
+                  <img
+                    className="h-full w-full object-cover object-[35%_center] filter grayscale-[40%] group-hover:grayscale-0 transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 group-hover:-translate-x-8"
+                    src={item.imageOverride || item.imageUrl}
+                    alt={item.title}
+                  />
+                </div>
 
-              {/* Horizontal Content Overlay - hidden by default, shown on hover (Desktop) / always shown (Mobile) */}
-              <div className="absolute inset-0 z-20 pointer-events-none flex flex-col justify-end pb-12 pl-12 pr-6 transform skew-x-12 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500">
-                <div className="translate-y-4 md:translate-y-8 md:group-hover:translate-y-0 transition-transform duration-500">
-                  <span className="inline-block bg-geki-red text-white text-[10px] font-black uppercase tracking-widest px-2 py-1 mb-3">
-                    {item.subtitle}
-                  </span>
-                  <h3 className="text-white font-display font-black text-3xl md:text-5xl uppercase leading-none drop-shadow-lg mb-4">
-                    {item.title}
-                  </h3>
+                {/* Horizontal Content Overlay - hidden by default, shown on hover (Desktop) / always shown (Mobile) */}
+                <div className="absolute inset-0 z-20 pointer-events-none flex flex-col justify-end pb-12 pl-12 pr-6 transform skew-x-[12deg] opacity-0 group-hover:opacity-100 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]">
+                  <div className="translate-y-12 group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]">
+                    <span className="inline-block bg-geki-red text-white text-[10px] font-black uppercase tracking-widest px-2 py-1 mb-3">
+                      {item.subtitle}
+                    </span>
+                    <h3 className="text-white font-display font-black text-3xl md:text-5xl uppercase leading-none drop-shadow-2xl mb-4">
+                      {item.title}
+                    </h3>
 
-                  {/* Detailed Description on Hover */}
-                  <div className="max-h-0 md:max-h-[0px] overflow-hidden md:group-hover:max-h-[200px] transition-all duration-700 ease-in-out opacity-0 md:group-hover:opacity-100">
-                      <p className="text-slate-200 text-sm md:text-base font-medium leading-relaxed max-w-sm border-l-2 border-geki-red pl-3">
-                          {item.hoverDescription}
-                      </p>
-                      <div className="mt-4 flex items-center gap-2 text-geki-red text-xs font-black uppercase tracking-widest">
-                          Ver Builds <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                      </div>
+                    {/* Detailed Description on Hover */}
+                    <div className="max-h-0 overflow-hidden group-hover:max-h-[200px] transition-all duration-1000 ease-in-out">
+                        <p className="text-slate-100 text-sm md:text-base font-medium leading-relaxed max-w-sm border-l-2 border-geki-red pl-4 backdrop-blur-sm bg-black/5 p-2 rounded-r-lg">
+                            {item.hoverDescription}
+                        </p>
+                        <div className="mt-6 flex items-center gap-2 text-geki-red text-xs font-black uppercase tracking-[0.3em] animate-pulse">
+                            Ver Builds <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </div>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Vertical Text for collapsed state (Desktop only) */}
-              <div className="hidden md:flex absolute inset-0 items-center justify-center z-20 pointer-events-none transition-all duration-500 opacity-100 group-hover:opacity-0 skew-x-12">
-                <span className="text-white/80 font-display font-black text-4xl uppercase tracking-[0.1em] -rotate-90 whitespace-nowrap drop-shadow-lg">
-                  {item.title}
-                </span>
+                {/* Vertical Text for collapsed state (Desktop only) */}
+                <div className="hidden md:flex absolute inset-0 items-center justify-center z-20 pointer-events-none transition-all duration-500 opacity-100 group-hover:opacity-0 transform skew-x-[12deg]">
+                  <span className="text-white/80 font-display font-black text-4xl uppercase tracking-[0.1em] -rotate-90 whitespace-nowrap drop-shadow-lg">
+                    {item.title}
+                  </span>
+                </div>
               </div>
-              
             </div>
           ))}
         </div>

@@ -27,8 +27,8 @@
   <meta name="twitter:image" content="https://www.gekigaming.com.br/_assets/v11/45adf06fea0b843a60fbbb4d281e70b2e769719b.svg" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="https://www.gekigaming.com.br/_assets/v11/45adf06fea0b843a60fbbb4d281e70b2e769719b.svg" />
-  <link rel="apple-touch-icon" href="https://www.gekigaming.com.br/_assets/v11/45adf06fea0b843a60fbbb4d281e70b2e769719b.svg" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
   <meta name="theme-color" content="#D22027" />
   <meta name="googlebot" content="index, follow" />
   <meta name="format-detection" content="telephone=no" />
@@ -233,6 +233,34 @@
 
     .reveal-stagger>.reveal:nth-child(6) {
       transition-delay: 400ms;
+    }
+
+    .reveal-stagger>.reveal:nth-child(7) {
+      transition-delay: 480ms;
+    }
+
+    /* Scrollbar hide utility */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    @keyframes shine {
+      0% {
+        transform: translateX(-100%) skew-X(-12deg);
+      }
+
+      100% {
+        transform: translateX(200%) skew-X(-12deg);
+      }
+    }
+
+    .animate-shine {
+      animation: shine 3s infinite linear;
     }
   </style>
   <script type="importmap">
