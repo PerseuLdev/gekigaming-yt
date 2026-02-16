@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { BuildGuide, BuildStage, BuildTip } from '../types';
 
 interface BuildDetailsProps {
@@ -10,9 +10,27 @@ interface BuildDetailsProps {
 export const BuildDetails: React.FC<BuildDetailsProps> = ({ build, detailedData: data, onBack }) => {
   const [activeStage, setActiveStage] = useState(0);
 
-  if (!data) return null;
+  const currentStage = useMemo(() => {
+     if (!data) return null;
+     
+     const baseStage = data.stages[activeStage] || data.stages[0];
 
-  const currentStage = data.stages[activeStage] || data.stages[0];
+     // Merge equipment from all previous stages up to current to implement inheritance
+     // This ensures that if "End Game" doesn't specify an accessory, it keeps the one from "Mid Game"
+     const inheritedEquipment = data.stages.slice(0, activeStage + 1).reduce((acc: any, stage: any) => {
+        return {
+           ...acc,
+           ...stage.equipment
+        };
+     }, {});
+
+     return {
+        ...baseStage,
+        equipment: inheritedEquipment
+     };
+  }, [data, activeStage]);
+
+  if (!data || !currentStage) return null;
 
   const getTipStyles = (type: BuildTip['type']) => {
     switch (type) {

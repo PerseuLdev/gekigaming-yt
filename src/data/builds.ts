@@ -18,8 +18,8 @@ export const ARQUIMAGO_GRAVITACIONAL_DATA: DetailedBuild = {
       phase: "Fase Avançada (End Game)",
       items: [
         { name: "INT", value: "90+", description: "Dano máximo" },
-        { name: "DES", value: 76, description: "Ativar Runa Topázio Dualfóssil" },
-        { name: "VIT", value: "Restante", description: "Ativar Runa Jade Dualfóssil (Redução de pós)" },
+        { name: "DES", value: 76, description: "Ativar Runa Topázio do Alphoccio" },
+        { name: "VIT", value: "Restante", description: "Ativar Runa Jade do Alphoccio (Redução de pós)" },
         { name: "FOR", value: 36, description: "Capacidade de carga" },
       ]
     }
@@ -126,8 +126,8 @@ export const ARQUIMAGO_GRAVITACIONAL_DATA: DetailedBuild = {
         escudo: "Vembrassa Ilusional",
         capa: "Sobrepeliz Ilusional (+12) [Carta Professora Célia]",
         sapatos: "Botas da Aberração [Carta Bispo Decadente Selvagem]",
-        acessorio1: "Orbe do Yokai",
-        acessorio2: "Lyst Brisingamen"
+        acessorio1: "Orbe do Yokai [Carta Senhora da Empatia + Runa Selvagem Celeste]",
+        acessorio2: "Lyst Brisingamen [Carta Elvira]"
       }
     }
   ]
