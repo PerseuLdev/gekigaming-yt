@@ -112,8 +112,8 @@ export const ExpandingGallery: React.FC<ExpandingGalleryProps> = ({ items, onCla
                 </div>
 
                 {/* Vertical Text for collapsed state (Desktop only) */}
-                <div className="hidden md:flex absolute inset-0 items-center justify-center z-20 pointer-events-none transition-all duration-500 opacity-100 group-hover:opacity-0 transform skew-x-[12deg]">
-                  <span className="text-white/80 font-display font-black text-4xl uppercase tracking-[0.1em] -rotate-90 whitespace-nowrap drop-shadow-lg">
+                <div className="flex absolute inset-0 items-center justify-center z-20 pointer-events-none transition-all duration-500 opacity-100 group-hover:opacity-0 transform skew-x-[12deg]">
+                  <span className="text-white/80 font-display font-black text-2xl md:text-4xl uppercase tracking-[0.1em] -rotate-90 whitespace-nowrap drop-shadow-lg">
                     {item.title}
                   </span>
                 </div>

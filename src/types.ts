@@ -1,5 +1,5 @@
 
-export type ContentCategory = 'Builds' | 'Guias Essenciais' | 'Do Zero ao RMT - Ragnatales' | 'Pai de Família' | 'Patch Notes';
+export type ContentCategory = 'Builds' | 'Guias Essenciais' | 'Do Zero ao RMT - Ragnatales' | 'MMO para o Pai de Família' | 'Patch Notes';
 
 export interface BuildStage {
   label: string; // "Start", "Early Game", "Mid Game", etc.
@@ -48,5 +48,6 @@ export interface GalleryItem {
 export enum PageView {
   HOME = 'HOME',
   BUILDS = 'BUILDS',
-  ABOUT = 'ABOUT'
+  ABOUT = 'ABOUT',
+  ARTICLES = 'ARTICLES'
 }

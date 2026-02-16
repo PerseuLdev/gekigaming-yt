@@ -516,7 +516,7 @@ export const RAGNATALES_BUILDS: BuildGuide[] = [
     title: "Build em destaque - Menestrel Vulcão de Farm Ragnatales",
     class: "Menestrel",
     author: "GekiGaming",
-    description: "Conheça a build de Vulcão de Flechas para farm no Ragnatales, uma das builds recomendadas no Guia de Progressão do Pai de Família, o Vulcão de Flechas é uma habilidade fortíssima capaz...",
+    description: "Conheça a build de Vulcão de Flechas para farm no Ragnatales, uma das builds recomendadas no Guia de Progressão do MMO para o Pai de Família, o Vulcão de Flechas é uma habilidade fortíssima capaz...",
     imageUrl: "https://img.youtube.com/vi/DtcgUbRaU6U/maxresdefault.jpg",
     fallbackImageUrl: "https://img.youtube.com/vi/DtcgUbRaU6U/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/watch?v=DtcgUbRaU6U",
@@ -636,7 +636,7 @@ export const RAGNATALES_BUILDS: BuildGuide[] = [
     title: "Build em Destaque - Mestre-ferreiro Martelo de Thor Ragnatales",
     class: "Mestre-Ferreiro",
     author: "GekiGaming",
-    description: "Conheça a build de Martelo de Thor no Ragnatales, uma das builds recomendadas no Guia de Progressão do Pai de Família, o martelão foi buffado na última atualização de Verus e está melhor...",
+    description: "Conheça a build de Martelo de Thor no Ragnatales, uma das builds recomendadas no Guia de Progressão do MMO para o Pai de Família, o martelão foi buffado na última atualização de Verus e está melhor...",
     imageUrl: "https://img.youtube.com/vi/LMLRcq5qq_Y/maxresdefault.jpg",
     fallbackImageUrl: "https://img.youtube.com/vi/LMLRcq5qq_Y/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/watch?v=LMLRcq5qq_Y",
@@ -1260,10 +1260,10 @@ export const RAGNATALES_BUILDS: BuildGuide[] = [
     videoUrl: "https://www.youtube.com/watch?v=O6JE8uMjFNg",
     tags: [],
   },
-  // --- Pai de Família ---
+  // --- MMO para o Pai de Família ---
   {
     id: "ragna-102",
-    category: "Pai de Família",
+    category: "MMO para o Pai de Família",
     title: "RagnaTales: A Jornada das Sombras (Episódio 01)",
     author: "GekiGaming",
     description: "Participe dos sorteios: https://forms.gle/5rqzB24RTwdmRA3U9  Produção Roteiro, voz, edição e engenharia de prompt: José \"Gekigami\" Façanha Arte gerada com ChatGPT Anime Art e Nano Banana,...",
@@ -1274,7 +1274,7 @@ export const RAGNATALES_BUILDS: BuildGuide[] = [
   },
   {
     id: "ragna-103",
-    category: "Pai de Família",
+    category: "MMO para o Pai de Família",
     title: "Where Winds Meet, mas eu sou pai de família",
     author: "GekiGaming",
     description: "🐯 Seja membro do Canal https://www.youtube.com/channel/UCjkmc3kM9zNyUiLTicT04vA/join  🤝 Me escolha como Streamer Parceiro no RagnaTales Na sua conta no site do RagnaTales, selecione Dados...",
@@ -1285,8 +1285,8 @@ export const RAGNATALES_BUILDS: BuildGuide[] = [
   },
   {
     id: "ragna-104",
-    category: "Pai de Família",
-    title: "Throne and Liberty: 100 horas depois, faz sentido pro Pai de Família?",
+    category: "MMO para o Pai de Família",
+    title: "Throne and Liberty: 100 horas depois, faz sentido pro MMO para o Pai de Família?",
     author: "GekiGaming",
     description: "🔥 Ignite Store https://www.ignitestore-games.com.br/  🎙️ Discord Gekigaming https://discord.gg/d27B88MgJx  🎮 Jogue no RagnaTales https://ragnatales.com.br/  #ThroneAndLiberty #ThroneAndL...",
     imageUrl: "https://img.youtube.com/vi/T1V7gj4mXiY/maxresdefault.jpg",
@@ -1296,8 +1296,8 @@ export const RAGNATALES_BUILDS: BuildGuide[] = [
   },
   {
     id: "ragna-105",
-    category: "Pai de Família",
-    title: "RagnaTales: Como um Pai de Família progride no Early Game na prática",
+    category: "MMO para o Pai de Família",
+    title: "RagnaTales: Como um MMO para o Pai de Família progride no Early Game na prática",
     author: "GekiGaming",
     description: "🐯 Seja membro do Canal, receba um visual exclusivo e mais! https://www.youtube.com/channel/UCjkmc3kM9zNyUiLTicT04vA/join  🤝 Me escolha como Streamer Parceiro no RagnaTales Na sua conta...",
     imageUrl: "https://img.youtube.com/vi/77rPnokpaNc/maxresdefault.jpg",
@@ -1307,8 +1307,8 @@ export const RAGNATALES_BUILDS: BuildGuide[] = [
   },
   {
     id: "ragna-106",
-    category: "Pai de Família",
-    title: "Como progredir no RagnaTales sendo Pai de Família (em 2025) - Guia Completo",
+    category: "MMO para o Pai de Família",
+    title: "Como progredir no RagnaTales sendo MMO para o Pai de Família (em 2025) - Guia Completo",
     author: "GekiGaming",
     description: "Aprenda como progredir no RagnaTales em 2025 sendo pai de família. Agradecimento ao bibico @RadaxtGamer pelas gameplays  🐯 Seja membro do Canal, receba um visual exclusivo e mais! https://www.y...",
     imageUrl: "https://img.youtube.com/vi/sG0QZNYomss/maxresdefault.jpg",
@@ -1318,7 +1318,7 @@ export const RAGNATALES_BUILDS: BuildGuide[] = [
   },
   {
     id: "ragna-107",
-    category: "Pai de Família",
+    category: "MMO para o Pai de Família",
     title: "O que fazer quando o tempo está curto?: Comecei do Zero - Episódio 06",
     author: "GekiGaming",
     description: "A \"Rotina Diária\" no RagnaTales é flexível! Se você tem pouco tempo para jogar, há outras formas de progredir e ajustar essa rotina em Midgard pra encaixá-la na sua rotina da vida real....",
@@ -1329,7 +1329,7 @@ export const RAGNATALES_BUILDS: BuildGuide[] = [
   },
   {
     id: "ragna-108",
-    category: "Pai de Família",
+    category: "MMO para o Pai de Família",
     title: "Nosso Segundo Dia do Zero no RagnaTales: Set de Raw Zeny e Passe do Iniciante - Episódio 02",
     author: "GekiGaming",
     description: "Veja como está nossa progressão no 2o Dia de jogo no RagnaTales 🚀  🐯 Seja membro do Canal, receba um visual exclusivo e mais! https://www.youtube.com/channel/UCjkmc3kM9zNyUiLTicT04vA/join...",
@@ -1340,10 +1340,10 @@ export const RAGNATALES_BUILDS: BuildGuide[] = [
   },
   {
     id: "ragna-109",
-    category: "Pai de Família",
-    title: "Nossa PRIMEIRA SEMANA do ZERO no RagnaTales! Pai de Família DO ZERO à CHEFÊNIA - Episódio 02",
+    category: "MMO para o Pai de Família",
+    title: "Nossa PRIMEIRA SEMANA do ZERO no RagnaTales! MMO para o Pai de Família DO ZERO à CHEFÊNIA - Episódio 02",
     author: "GekiGaming",
-    description: "Participe do Clube de Membros e ganhe um visual exclusivo! https://www.youtube.com/channel/UCjkmc3kM9zNyUiLTicT04vA/join  O segundo episódio do Pai de Família do Zero! Bora conferir o que...",
+    description: "Participe do Clube de Membros e ganhe um visual exclusivo! https://www.youtube.com/channel/UCjkmc3kM9zNyUiLTicT04vA/join  O segundo episódio do MMO para o Pai de Família do Zero! Bora conferir o que...",
     imageUrl: "https://img.youtube.com/vi/0WO6UXApCQs/maxresdefault.jpg",
     fallbackImageUrl: "https://img.youtube.com/vi/0WO6UXApCQs/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/watch?v=0WO6UXApCQs",
@@ -1351,8 +1351,8 @@ export const RAGNATALES_BUILDS: BuildGuide[] = [
   },
   {
     id: "ragna-110",
-    category: "Pai de Família",
-    title: "Como um Pai de Família vai DO ZERO à CHEFÊNIA no RagnaTales - Episódio 01",
+    category: "MMO para o Pai de Família",
+    title: "Como um MMO para o Pai de Família vai DO ZERO à CHEFÊNIA no RagnaTales - Episódio 01",
     author: "GekiGaming",
     description: "Participe do Clube de Membros e ganhe um visual exclusivo! https://www.youtube.com/channel/UCjkmc3kM9zNyUiLTicT04vA/join  Como um pai de família progride no RagnaTales? Começa a nova série...",
     imageUrl: "https://img.youtube.com/vi/hzkg05zHOAk/maxresdefault.jpg",
@@ -1362,7 +1362,7 @@ export const RAGNATALES_BUILDS: BuildGuide[] = [
   },
   {
     id: "ragna-111",
-    category: "Pai de Família",
+    category: "MMO para o Pai de Família",
     title: "Aprenda TUDO sobre o EARLY GAME do RagnaTales - Guia de PROGRESSÃO do PAI DE FAMÍLIA  Parte 3",
     author: "GekiGaming",
     description: "Salve pai de família! Nesse vídeo vamos falar sobre a terceira parte da progressão: O Early Game.  Caso você não tenha visto a parte 1 e 2 https://www.youtube.com/watch?v=3V4pwblG7wY&t=1s...",
@@ -1373,7 +1373,7 @@ export const RAGNATALES_BUILDS: BuildGuide[] = [
   },
   {
     id: "ragna-112",
-    category: "Pai de Família",
+    category: "MMO para o Pai de Família",
     title: "TUDO que você precisa para COMEÇAR bem no RagnaTales - Guia de PROGRESSÃO do PAI DE FAMÍLIA  Parte 1",
     author: "GekiGaming",
     description: "Parte 1 do guia de progressão do pai de família no Ragnatales, esse guia busca ajudar você, trabalhador honesto, papai, mamãe, universitário ou pessoa com responsabilidades, que ama um...",

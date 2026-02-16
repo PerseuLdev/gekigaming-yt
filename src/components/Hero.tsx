@@ -33,8 +33,8 @@ export const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
         </div>
 
         {/* Main Typography - MAXIMALIST */}
-        <h1 className="reveal text-6xl md:text-8xl lg:text-[7rem] font-display font-black leading-[0.9] text-white tracking-tighter mb-6 shadow-black drop-shadow-2xl" style={{transitionDelay: '150ms'}}>
-          Ragnarok pro <br/>
+        <h1 className="reveal text-5xl md:text-8xl lg:text-[7rem] font-display font-black leading-[0.9] text-white tracking-tighter mb-6 shadow-black drop-shadow-2xl" style={{transitionDelay: '150ms'}}>
+          MMO PARA O <br/>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-geki-red via-red-500 to-orange-500 relative">
             PAI DE FAMÍLIA
             {/* Aesthetic Glow behind text */}

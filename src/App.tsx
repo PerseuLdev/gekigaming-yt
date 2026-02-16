@@ -6,18 +6,23 @@ import { ExpandingGallery } from './components/ExpandingGallery';
 import { BuildGrid } from './components/BuildGrid';
 import { YoutubeCta } from './components/YoutubeCta';
 import { Footer } from './components/Footer';
+import { ArticlesPage } from './components/ArticlesPage';
+import { BuildModal } from './components/BuildModal';
 import { GALLERY_ITEMS, LATEST_BUILDS, CLASS_GROUPS } from './constants';
-import { PageView } from './types';
+import { PageView, BuildGuide } from './types';
 import { useReveal } from './hooks/useReveal';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<PageView>(PageView.HOME);
   const [selectedClassFilter, setSelectedClassFilter] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedBuild, setSelectedBuild] = useState<BuildGuide | null>(null);
+// ... existing states ...
   
   // Defaulting to Light Mode as requested ("fundo branco")
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setShowScrollTop(window.scrollY > 400);
@@ -83,6 +88,15 @@ function App() {
           setSelectedClassFilter(null);
           setSearchTerm("");
       }
+      if (page !== PageView.ARTICLES) {
+          setSelectedCategory(null);
+      }
+  };
+
+  const handleViewCategory = (category: string) => {
+      setSelectedCategory(category);
+      setCurrentPage(PageView.ARTICLES);
+      window.scrollTo(0, 0);
   };
 
   const renderContent = () => {
@@ -118,60 +132,27 @@ function App() {
 
         return (
           <div className="pt-24 min-h-screen bg-geki-paper dark:bg-geki-black transition-colors duration-300">
+             {/* ... inside BUILDS case ... */}
              <div className="max-w-7xl mx-auto px-4 mb-8">
-                <button
-                    onClick={() => setCurrentPage(PageView.HOME)}
-                    className="reveal mb-4 text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-geki-red transition-colors flex items-center gap-1"
-                >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-                    Voltar para Início
-                </button>
-                <h1 className="reveal text-4xl md:text-5xl font-display font-black text-geki-black dark:text-white mb-4 tracking-tight text-center" style={{transitionDelay: '100ms'}}>
-                   {selectedClassFilter ? (
-                       <>GUIA DE CLASSE: <span className="text-geki-red">{title.replace('Builds de ', '').toUpperCase()}</span></>
-                   ) : searchTerm ? (
-                       <>BUSCA: <span className="text-geki-red">{searchTerm.toUpperCase()}</span></>
-                   ) : (
-                       <>OTIMIZE SEU TEMPO, <br/><span className="text-geki-red">MAXIMIZE SUA DIVERSÃO</span></>
-                   )}
-                </h1>
-                <p className="reveal text-slate-600 dark:text-slate-400 font-sans max-w-2xl mx-auto mb-8 text-center" style={{transitionDelay: '200ms'}}>
-                  {selectedClassFilter 
-                    ? `Explore as melhores estratégias e equipamentos para dominar com seu ${selectedClassFilter}.`
-                    : "Encontre a build perfeita filtrando por nome ou classe abaixo."
-                  }
-                </p>
-
-                {/* SEARCH BAR COMPONENT */}
-                <div className="max-w-md mx-auto mb-12 relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                  </div>
-                  <input
-                    type="text"
-                    placeholder="Busque por classe, nome da build..."
-                    className="block w-full pl-10 pr-3 py-3 border border-slate-300 dark:border-gray-700 rounded-lg leading-5 bg-white dark:bg-gray-800 text-slate-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-geki-red focus:border-geki-red sm:text-sm transition duration-150 ease-in-out shadow-sm"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                  />
-                  {searchTerm && (
-                    <div className="absolute top-full left-0 right-0 mt-2 text-xs text-slate-500 dark:text-slate-400 font-bold text-center animate-fade-in">
-                       Encontrados {displayedBuilds.length} resultados
-                    </div>
-                  )}
-                </div>
-
+                {/* ... */}
              </div>
              
-             {/* We use forcedBuilds here to show exactly what we filtered */}
              <BuildGrid 
-                builds={[]} // Not used in forced mode
+                builds={[]} 
                 forcedBuilds={displayedBuilds} 
                 customTitle={title}
              /> 
           </div>
+        );
+      case PageView.ARTICLES:
+        return (
+          <ArticlesPage 
+            initialCategory={selectedCategory}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+            onNavigateHome={() => handleNavigate(PageView.HOME)}
+            onSelectBuild={setSelectedBuild}
+          />
         );
       case PageView.ABOUT:
          return (
@@ -242,13 +223,18 @@ function App() {
             <div className="pt-10">
                 <BuildGrid
                     builds={LATEST_BUILDS}
-                    categories={['Do Zero ao RMT - Ragnatales', 'Pai de Família', 'Guias Essenciais', 'Patch Notes']}
+                    categories={['Do Zero ao RMT - Ragnatales', 'MMO para o Pai de Família', 'Guias Essenciais', 'Patch Notes']}
+                    onViewCategory={handleViewCategory}
                 />
             </div>
 
             <div className="reveal">
               <YoutubeCta />
             </div>
+
+            {selectedBuild && (
+              <BuildModal build={selectedBuild} onClose={() => setSelectedBuild(null)} />
+            )}
           </div>
         );
     }

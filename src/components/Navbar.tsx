@@ -295,7 +295,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onSearc
                   Geki<span className="text-geki-red">Gaming</span>
                 </span>
                 <span className="text-white/40 text-[10px] font-bold uppercase tracking-[0.3em] mt-1">
-                  Pro Pai de Família
+                  MMO para o Pai de Família
                 </span>
               </div>
             </div>
