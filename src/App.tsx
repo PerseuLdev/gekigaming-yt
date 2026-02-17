@@ -271,18 +271,18 @@ const ClassArchive: React.FC<{ builds: BuildGuide[] }> = ({ builds }) => {
                         const buildSlug = build.slug || slugify(build.title);
                         navigate(`/build/${classSlug}/${buildSlug}`);
                       }}
-                      className="group relative h-[400px] rounded-3xl overflow-hidden cursor-pointer shadow-2xl shadow-geki-red/10 border-2 border-transparent hover:border-geki-red/50 transition-all duration-500"
+                      className="group relative h-[300px] sm:h-[400px] rounded-3xl overflow-hidden cursor-pointer shadow-2xl shadow-geki-red/10 border-2 border-transparent hover:border-geki-red/50 transition-all duration-500"
                     >
                        <img src={build.imageUrl} alt={build.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90" />
-                       <div className="absolute bottom-0 left-0 p-8">
-                          <span className="bg-geki-red text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full mb-4 inline-block">
+                       <div className="absolute bottom-0 left-0 p-5 sm:p-8">
+                          <span className="bg-geki-red text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full mb-3 sm:mb-4 inline-block">
                              Guia Completo
                           </span>
-                          <h3 className="text-3xl font-display font-black text-white mb-2 leading-none group-hover:text-geki-red transition-colors">
+                          <h3 className="text-2xl sm:text-3xl font-display font-black text-white mb-2 leading-none group-hover:text-geki-red transition-colors">
                             {build.title}
                           </h3>
-                          <p className="text-slate-300 text-sm line-clamp-2 mb-4 max-w-lg">
+                          <p className="text-slate-300 text-sm line-clamp-2 mb-3 sm:mb-4 max-w-lg">
                             {build.description}
                           </p>
                           <div className="flex items-center gap-2 text-geki-red font-bold text-xs uppercase tracking-widest">
