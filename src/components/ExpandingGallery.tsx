@@ -23,7 +23,7 @@ export const ExpandingGallery: React.FC<ExpandingGalleryProps> = ({ items, onCla
     <section className="w-full flex flex-col items-center justify-start py-10 md:py-16 relative overflow-hidden bg-geki-paper dark:bg-geki-black transition-colors duration-300">
       
       {/* Header & Mobile Navigation */}
-      <div className="w-full max-w-7xl px-4 mb-8 flex items-end justify-between relative z-10">
+      <div className="w-full max-w-7xl px-4 mb-8 flex flex-col md:flex-row md:items-end md:justify-between relative z-10">
         <div className="max-w-xl">
             <div className="inline-block px-3 py-1 mb-3 border border-geki-red/30 rounded-full">
                 <span className="text-geki-red text-[10px] font-bold uppercase tracking-[0.2em]">O Guia Definitivo</span>
@@ -36,8 +36,8 @@ export const ExpandingGallery: React.FC<ExpandingGalleryProps> = ({ items, onCla
           </p>
         </div>
 
-        {/* Mobile Navigation Buttons (Top Right) */}
-        <div className="flex md:hidden gap-2">
+        {/* Mobile Navigation Buttons (Below Title) */}
+        <div className="flex md:hidden gap-2 mt-4">
           <button 
             onClick={() => scroll('left')}
             className="w-10 h-10 flex items-center justify-center bg-white dark:bg-zinc-800 border border-slate-200 dark:border-white/10 rounded-full shadow-lg active:scale-95 transition-transform text-geki-black dark:text-white"
