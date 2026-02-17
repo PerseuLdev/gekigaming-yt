@@ -192,7 +192,7 @@ const BuildCard: React.FC<{ build: BuildGuide, onSelect: (b: BuildGuide) => void
             } ${build.detailedData || (build as any).stages || build.videoUrl ? 'cursor-pointer' : ''}`}
         >
             {/* Card Header/Image */}
-            <div className="relative h-52 overflow-hidden shrink-0">
+            <div className="relative h-40 sm:h-52 overflow-hidden shrink-0">
                 {(build.videoUrl && !build.stages) && (
                 <div className={`absolute inset-0 z-20 flex items-center justify-center transition-opacity duration-300 bg-black/40 pointer-events-none ${isFocused ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
                     <YouTubeIcon />
@@ -230,11 +230,11 @@ const BuildCard: React.FC<{ build: BuildGuide, onSelect: (b: BuildGuide) => void
             </div>
 
             {/* Card Body */}
-            <div className="p-6 flex flex-col flex-grow relative">
+            <div className="p-4 sm:p-6 flex flex-col flex-grow relative">
                 {/* Decorative Line */}
-                <div className="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-slate-300 dark:via-white/20 to-transparent"></div>
+                <div className="absolute top-0 left-4 right-4 sm:left-6 sm:right-6 h-[1px] bg-gradient-to-r from-transparent via-slate-300 dark:via-white/20 to-transparent"></div>
 
-                <div className="flex flex-wrap gap-2 mb-4 mt-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 mt-1 sm:mb-4 sm:mt-2">
                     {build.tags.map(tag => (
                         <span key={tag} className="text-[9px] uppercase font-bold text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-white/10 px-2 py-0.5 rounded-full hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
                             #{tag}
@@ -246,11 +246,11 @@ const BuildCard: React.FC<{ build: BuildGuide, onSelect: (b: BuildGuide) => void
                     {build.title}
                 </h3>
 
-                <p className={`text-slate-600 dark:text-slate-400 text-sm mb-6 leading-relaxed transition-all duration-300 font-sans ${isFocused ? 'line-clamp-none' : 'line-clamp-3'}`}>
+                <p className={`text-slate-600 dark:text-slate-400 text-sm mb-4 sm:mb-6 leading-relaxed transition-all duration-300 font-sans ${isFocused ? 'line-clamp-none' : 'line-clamp-4 sm:line-clamp-3'}`}>
                     {build.description}
                 </p>
 
-                <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-white/5 mt-auto">
+                <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-slate-100 dark:border-white/5 mt-auto">
                     <div className="flex items-center gap-2">
                         {build.class && (
                             <span className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">{build.class}</span>

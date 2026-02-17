@@ -129,7 +129,7 @@ const ArticleGridCard: React.FC<{ article: BuildGuide, onSelect: (b: BuildGuide)
                 : 'border-slate-200 dark:border-white/5 hover:border-geki-red/50 hover:shadow-2xl hover:shadow-geki-red/5'
             }`}
         >
-            <div className="relative h-48 overflow-hidden">
+            <div className="relative h-36 sm:h-48 overflow-hidden">
                 <img
                     src={article.imageUrl}
                     alt={article.title}
@@ -141,14 +141,14 @@ const ArticleGridCard: React.FC<{ article: BuildGuide, onSelect: (b: BuildGuide)
                    </span>
                 </div>
             </div>
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
                 <h3 className={`text-lg font-display font-bold mb-2 line-clamp-2 leading-tight transition-colors ${isFocused ? 'text-geki-red' : 'text-geki-black dark:text-white group-hover:text-geki-red'}`}>
                     {article.title}
                 </h3>
-                <p className={`text-slate-600 dark:text-slate-400 text-xs mb-4 font-sans transition-all duration-300 ${isFocused ? 'line-clamp-none' : 'line-clamp-2'}`}>
+                <p className={`text-slate-600 dark:text-slate-400 text-xs mb-3 sm:mb-4 font-sans transition-all duration-300 ${isFocused ? 'line-clamp-none' : 'line-clamp-3 sm:line-clamp-2'}`}>
                     {article.description}
                 </p>
-                <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-white/5">
+                <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-slate-100 dark:border-white/5">
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{article.author}</span>
                     <span className={`text-[10px] font-black uppercase transition-colors ${isFocused ? 'text-geki-red underline' : 'text-geki-red'}`}>
                         {isFocused ? 'Abrir Build →' : 'Ler Agora →'}
