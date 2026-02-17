@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Routes, Route, useNavigate, useParams, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate, useParams, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ExpandingGallery } from './components/ExpandingGallery';
@@ -150,6 +150,7 @@ function App() {
           <Route path="/build/:classSlug/:buildSlug" element={<BuildPage builds={enhancedBuilds} />} />
           <Route path="/build/:buildId" element={<BuildPage builds={enhancedBuilds} />} />
           <Route path="/sobre" element={<AboutPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
 
