@@ -303,7 +303,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onSearc
 
           <div className="flex-grow overflow-y-auto px-6 py-8 space-y-2 custom-scrollbar">
             {/* Mobile Search - More prominent */}
-            <div className={`transition-all duration-700 delay-100 ${isMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+            <div className={`relative z-10 transition-all duration-700 delay-100 ${isMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
               <span className="block text-[10px] font-bold uppercase tracking-widest text-white/30 ml-4 mb-2">Busca</span>
               <MobileSearch
                 searchValue={searchValue}
