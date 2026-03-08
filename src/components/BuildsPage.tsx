@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BuildGuide } from '../types';
 import { CLASS_GROUPS } from '../constants';
@@ -10,7 +10,6 @@ interface BuildsPageProps {
   setSelectedClass: (cls: string | null) => void;
 }
 
-// Flatten all class filter options
 const CLASS_FILTERS = Object.keys(CLASS_GROUPS);
 
 export const BuildsPage: React.FC<BuildsPageProps> = ({
@@ -19,6 +18,8 @@ export const BuildsPage: React.FC<BuildsPageProps> = ({
   setSelectedClass,
 }) => {
   const navigate = useNavigate();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const filteredBuilds = useMemo(() => {
     if (!selectedClass) return builds;
@@ -32,6 +33,17 @@ export const BuildsPage: React.FC<BuildsPageProps> = ({
     const buildSlug = build.slug || slugify(build.title);
     navigate(`/build/${classSlug}/${buildSlug}`);
   };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <div className="pt-24 min-h-screen bg-geki-paper dark:bg-geki-black transition-colors duration-300">
@@ -57,31 +69,63 @@ export const BuildsPage: React.FC<BuildsPageProps> = ({
           </p>
         </header>
 
-        {/* Class Filter Chips */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
-          <button
-            onClick={() => setSelectedClass(null)}
-            className={`px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-300 border-2 ${
-              !selectedClass
-                ? 'bg-geki-red border-geki-red text-white shadow-lg shadow-geki-red/20'
-                : 'bg-transparent border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400 hover:border-geki-red hover:text-geki-red'
-            }`}
-          >
-            Todos
-          </button>
-          {CLASS_FILTERS.map((cls) => (
+        {/* Class Filter Dropdown */}
+        <div className="flex justify-center mb-16">
+          <div ref={dropdownRef} className="relative w-full max-w-xs">
             <button
-              key={cls}
-              onClick={() => setSelectedClass(cls)}
-              className={`px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-300 border-2 ${
-                selectedClass === cls
-                  ? 'bg-geki-red border-geki-red text-white shadow-lg shadow-geki-red/20'
-                  : 'bg-transparent border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400 hover:border-geki-red hover:text-geki-red'
+              onClick={() => setDropdownOpen(prev => !prev)}
+              className={`w-full flex items-center justify-between gap-3 px-5 py-3 border-2 text-xs font-black uppercase tracking-widest transition-all duration-300 ${
+                dropdownOpen || selectedClass
+                  ? 'border-geki-red text-geki-red bg-geki-red/5 dark:bg-geki-red/10'
+                  : 'border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400 bg-white dark:bg-zinc-900/60 hover:border-geki-red hover:text-geki-red'
               }`}
             >
-              {cls}
+              <span>{selectedClass ?? 'Todas as Classes'}</span>
+              <svg
+                className={`w-4 h-4 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`}
+                fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7"/>
+              </svg>
             </button>
-          ))}
+
+            {dropdownOpen && (
+              <div className="absolute z-50 top-full left-0 right-0 mt-1 bg-white dark:bg-zinc-900 border-2 border-geki-red shadow-2xl shadow-geki-red/10 overflow-hidden">
+                {/* All option */}
+                <button
+                  onClick={() => { setSelectedClass(null); setDropdownOpen(false); }}
+                  className={`w-full text-left px-5 py-3 text-xs font-black uppercase tracking-widest transition-colors duration-150 ${
+                    !selectedClass
+                      ? 'bg-geki-red text-white'
+                      : 'text-slate-500 dark:text-slate-400 hover:bg-geki-red/10 hover:text-geki-red'
+                  }`}
+                >
+                  Todas as Classes
+                </button>
+
+                {/* Divider */}
+                <div className="border-t border-slate-100 dark:border-white/5" />
+
+                {/* Class options */}
+                {CLASS_FILTERS.map((cls) => (
+                  <button
+                    key={cls}
+                    onClick={() => { setSelectedClass(cls); setDropdownOpen(false); }}
+                    className={`w-full text-left px-5 py-3 text-xs font-black uppercase tracking-widest transition-colors duration-150 ${
+                      selectedClass === cls
+                        ? 'bg-geki-red text-white'
+                        : 'text-slate-600 dark:text-slate-300 hover:bg-geki-red/10 hover:text-geki-red'
+                    }`}
+                  >
+                    {cls}
+                    <span className="ml-2 text-[10px] font-normal normal-case tracking-normal opacity-60">
+                      ({CLASS_GROUPS[cls].join(', ')})
+                    </span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Builds count */}
