@@ -23,9 +23,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <div className="flex items-center gap-2 mb-5">
               <div className="w-10 h-10 flex items-center justify-center">
                 <img
-                  src="https://www.gekigaming.com.br/_assets/v11/45adf06fea0b843a60fbbb4d281e70b2e769719b.svg"
+                  src="/favicon.svg"
                   alt="GekiGaming Logo"
-                  className="w-full h-full object-contain rotate-180"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <span className="text-geki-black dark:text-white font-display font-bold text-xl tracking-tight uppercase">

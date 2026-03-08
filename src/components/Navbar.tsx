@@ -95,9 +95,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onSearc
             >
               <div className={`h-10 w-10 flex items-center justify-center backdrop-blur-sm rounded-lg p-1 group-hover:border-geki-red/50 transition-colors ${navUseLight ? 'bg-geki-black/10 border border-slate-300' : 'bg-white/10 border border-white/10'}`}>
                 <img
-                  src="https://www.gekigaming.com.br/_assets/v11/45adf06fea0b843a60fbbb4d281e70b2e769719b.svg"
+                  src="/favicon.svg"
                   alt="GekiGaming Logo"
-                  className="h-full w-full object-contain rotate-180 drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]"
+                  className="h-full w-full object-contain drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]"
                 />
               </div>
               <span className={`font-display font-black text-xl tracking-tight leading-none uppercase hidden sm:block ${navUseLight ? 'text-geki-black' : 'text-white'} ${!scrolled && !navUseLight ? 'drop-shadow-md' : ''}`}>
@@ -286,9 +286,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onSearc
             <div className="flex items-center gap-4">
               <div className="h-12 w-12 flex items-center justify-center bg-white/10 border border-white/10 rounded-xl p-2 drop-shadow-xl">
                 <img
-                  src="https://www.gekigaming.com.br/_assets/v11/45adf06fea0b843a60fbbb4d281e70b2e769719b.svg"
+                  src="/favicon.svg"
                   alt="GekiGaming"
-                  className="h-full w-full object-contain rotate-180"
+                  className="h-full w-full object-contain"
                 />
               </div>
               <div className="flex flex-col">

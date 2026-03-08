@@ -10,7 +10,7 @@
   "theme_color": "#D22027",
   "icons": [
     {
-      "src": "https://www.gekigaming.com.br/_assets/v11/45adf06fea0b843a60fbbb4d281e70b2e769719b.svg",
+      "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     }
