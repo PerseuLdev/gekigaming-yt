@@ -81,6 +81,7 @@ export interface GalleryItem {
 export enum PageView {
   HOME = 'HOME',
   BUILDS = 'BUILDS',
+  PORTAL = 'PORTAL',
   ABOUT = 'ABOUT',
   ARTICLES = 'ARTICLES'
 }

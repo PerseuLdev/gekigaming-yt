@@ -66,7 +66,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onSearc
 
   const navItems = [
     { label: 'Início', value: PageView.HOME },
-    { label: 'Builds & Guias', value: PageView.BUILDS },
+    { label: 'Builds', value: PageView.BUILDS },
+    { label: 'Portal', value: PageView.PORTAL },
     { label: 'Sobre', value: PageView.ABOUT },
   ];
 

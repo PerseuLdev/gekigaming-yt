@@ -7,6 +7,7 @@ import { BuildGrid } from './components/BuildGrid';
 import { YoutubeCta } from './components/YoutubeCta';
 import { Footer } from './components/Footer';
 import { ArticlesPage } from './components/ArticlesPage';
+import { BuildsPage } from './components/BuildsPage';
 import { BuildModal } from './components/BuildModal';
 import { BuildDetails } from './components/BuildDetails';
 import { AboutPage } from './components/AboutPage';
@@ -45,6 +46,7 @@ function App() {
   // Determine current page view based on path for Navbar active state
   const currentPage = useMemo(() => {
     if (location.pathname === '/') return PageView.HOME;
+    if (location.pathname.startsWith('/portal')) return PageView.PORTAL;
     if (location.pathname.startsWith('/builds') || location.pathname.startsWith('/build/')) return PageView.BUILDS;
     if (location.pathname.startsWith('/sobre')) return PageView.ABOUT;
     return PageView.HOME;
@@ -74,17 +76,18 @@ function App() {
     switch (page) {
       case PageView.HOME: navigate('/'); break;
       case PageView.BUILDS: navigate('/builds'); break;
+      case PageView.PORTAL: navigate('/portal'); break;
       case PageView.ABOUT: navigate('/sobre'); break;
       default: navigate('/');
     }
   };
 
   const handleSearch = (term: string) => {
-    navigate(`/builds?search=${encodeURIComponent(term)}`);
+    navigate(`/portal?search=${encodeURIComponent(term)}`);
   };
 
   const handleViewCategory = (category: string) => {
-    navigate(`/builds?category=${encodeURIComponent(category)}`);
+    navigate(`/portal?category=${encodeURIComponent(category)}`);
   };
 
   useReveal();
@@ -145,8 +148,9 @@ function App() {
             </div>
           } />
 
-          <Route path="/builds" element={<ArticlesRoute />} />
+          <Route path="/builds" element={<BuildsRoute builds={enhancedBuilds} />} />
           <Route path="/builds/:classId" element={<ClassArchive builds={enhancedBuilds} />} />
+          <Route path="/portal" element={<ArticlesRoute />} />
           <Route path="/build/:classSlug/:buildSlug" element={<BuildPage builds={enhancedBuilds} />} />
           <Route path="/build/:buildId" element={<BuildPage builds={enhancedBuilds} />} />
           <Route path="/sobre" element={<AboutPage />} />
@@ -179,7 +183,7 @@ function App() {
   );
 }
 
-// Component helper for the Articles page (formerly BuildsArchive)
+// Route for /portal — content portal (guides, articles, no builds)
 const ArticlesRoute: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -188,14 +192,14 @@ const ArticlesRoute: React.FC = () => {
 
   const handleSetCategory = (cat: string | null) => {
     if (cat) {
-       navigate(`/builds?category=${encodeURIComponent(cat)}`);
+       navigate(`/portal?category=${encodeURIComponent(cat)}`);
     } else {
-       navigate('/builds');
+       navigate('/portal');
     }
   };
 
   return (
-    <ArticlesPage 
+    <ArticlesPage
       initialCategory={null}
       selectedCategory={category}
       setSelectedCategory={handleSetCategory}
@@ -205,6 +209,30 @@ const ArticlesRoute: React.FC = () => {
           const buildSlug = build.slug || slugify(build.title);
           navigate(`/build/${classSlug}/${buildSlug}`);
       }}
+    />
+  );
+};
+
+// Route for /builds — all builds with class filter
+const BuildsRoute: React.FC<{ builds: BuildGuide[] }> = ({ builds }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const selectedClass = searchParams.get('class');
+
+  const handleSetClass = (cls: string | null) => {
+    if (cls) {
+      navigate(`/builds?class=${encodeURIComponent(cls)}`);
+    } else {
+      navigate('/builds');
+    }
+  };
+
+  return (
+    <BuildsPage
+      builds={builds}
+      selectedClass={selectedClass}
+      setSelectedClass={handleSetClass}
     />
   );
 };

@@ -12,7 +12,6 @@ interface ArticlesPageProps {
 }
 
 const CATEGORIES: ContentCategory[] = [
-  'Builds',
   'Do Zero ao RMT - Ragnatales',
   'Guias Essenciais',
   'MMO para o Pai de Família',
@@ -27,7 +26,8 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = ({
 }) => {
   
   const filteredArticles = useMemo(() => {
-    if (!selectedCategory) return LATEST_BUILDS;
+    const portalCategories = CATEGORIES;
+    if (!selectedCategory) return LATEST_BUILDS.filter(b => portalCategories.includes(b.category as ContentCategory));
     return LATEST_BUILDS.filter(b => b.category === selectedCategory);
   }, [selectedCategory]);
 
